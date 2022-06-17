@@ -102,3 +102,4 @@ for (let i=0; i<elements; i++) {
   alpha += alphaDelta;
 }
 edgy();
+fxpreview();
