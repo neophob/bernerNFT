@@ -30,8 +30,6 @@ context.fillStyle = '#000000';
 context.fillRect(0, 0, W, H);
 
 const colors = ['#FAF038', '#DA0003', '#1101F8', '#F9F9F9', '#33333C'];
-//const colors = ['#70d6ff', '#ff70a6', '#ff9770', '#ffd670', '#e9ff70'];
-
 
 function drawElement() {
   context.save();
@@ -68,7 +66,7 @@ function drawElement() {
   context.restore();
 }
 
-function edge() {
+function edgy() {
   const myImageData = context.getImageData(0,0, W, H);
   const pixels = myImageData.data;
 
@@ -99,7 +97,4 @@ for (let i=0; i<elements; i++) {
   drawElement();
   alpha += alphaDelta;
 }
-edge();
-
-//addNoise();
-//requestAnimationFrame(step);
+edgy();
