@@ -7,13 +7,16 @@ function getRandomInt(dimension, minimalValue = 0) {
   return minimalValue + parseInt(fxrand() * dimension, 10);
 }
 
+// init parameter
 const elements = getRandomInt(1000, 150);
 const border = getRandomInt(200, 100);
 const rotation = getRandomInt(12);
 const lineWidth = 1 + fxrand();
 const MUL = 1 + fxrand();
 const ADDMAX = getRandomInt(64);
+const colors = ['#FAF038', '#DA0003', '#1101F8', '#F9F9F9', '#33333C'];
 
+// expose settings to fxhash
 window.$fxhashFeatures = {
    "Elements": elements,
    "Border": border,
@@ -24,13 +27,7 @@ window.$fxhashFeatures = {
 }
 console.table(window.$fxhashFeatures);
 
-const canvas = a;
-context = canvas.getContext("2d");
-context.fillStyle = '#000000';
-context.fillRect(0, 0, W, H);
-
-const colors = ['#FAF038', '#DA0003', '#1101F8', '#F9F9F9', '#33333C'];
-
+// some helper functions
 function drawElement() {
   context.save();
   const shadowSize = getRandomInt(12, 1) * 2;
@@ -88,6 +85,13 @@ function edgy() {
   context.putImageData(myImageData, 0, 0);
 }
 
+// start drawing
+const canvas = a;
+context = canvas.getContext("2d");
+context.fillStyle = '#000000';
+context.fillRect(0, 0, W, H);
+
+// "Main"
 const initialAlpha = 0.3;
 const endAlpha = 0.75;
 const alphaDelta = (endAlpha-initialAlpha) / elements;
