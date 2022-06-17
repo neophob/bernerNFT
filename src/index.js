@@ -3,6 +3,7 @@ const H = 512*8;
 a.width = W;
 a.height = H;
 
+// expose data to fxhash
 window.$fxhashFeatures = {
    "Foo": "Bar",
 }
