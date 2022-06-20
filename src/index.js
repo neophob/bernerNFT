@@ -31,8 +31,8 @@ console.log(fxhash);
 // some helper functions
 function drawElement() {
   context.save();
-  const shadowSize = getRandomInt(12, 1) * 2;
   context.rotate((fxrand()-0.5) * rotation * Math.PI / 180);
+  const shadowSize = getRandomInt(12, 1) * 2;
   context.shadowOffsetX = shadowSize;
   context.shadowOffsetY = shadowSize;
   context.shadowBlur = shadowSize;
