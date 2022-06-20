@@ -14,7 +14,14 @@ const rotation = getRandomInt(12);
 const lineWidth = 1 + fxrand();
 const MUL = 1 + fxrand();
 const ADDMAX = getRandomInt(64);
-const colors = ['#FAF038', '#DA0003', '#1101F8', '#F9F9F9', '#33333C'];
+const pal = [
+  ['#fe4a49', '#2ab7ca', '#fed766', '#e6e6ea', '#f4f4f8'],
+  ['#fe4a49', '#feb2a8', '#fec8c1', '#fad9c1', '#f9caa7'],
+  ['#ee4035', '#f37736', '#fdf498', '#7bc043', '#0392cf'],
+];
+const palIdx = getRandomInt(pal.length);
+const colors = pal[palIdx];
+
 
 // expose settings to fxhash
 window.$fxhashFeatures = {
@@ -24,6 +31,7 @@ window.$fxhashFeatures = {
    "Line Width": lineWidth,
    "Noise": ADDMAX,
    "Multiply": MUL,
+   "Palette": palIdx,
 }
 console.table(window.$fxhashFeatures);
 
@@ -67,7 +75,7 @@ function edgy() {
   const myImageData = context.getImageData(0,0, W, H);
   const pixels = myImageData.data;
 
-  for (let i = 0; i < pixels.length/1; i += 4) {
+  for (let i = 0; i < pixels.length/1; i += 8) {
     const lightnessPre = parseInt(pixels[i-4]*.299 + pixels[i-3]*.587 + pixels[i-2]*.114);
     const lightness = parseInt(pixels[i]*.299 + pixels[i + 1]*.587 + pixels[i + 2]*.114);
     if (lightness > lightnessPre) {
