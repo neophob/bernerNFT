@@ -2,7 +2,9 @@
 
 Based on https://github.com/fxhash/fxhash-simple-boilerplate
 
-This repo is used as education repo to build simple, generative NFT for the FXHash website / community. FXHash link of this repo is https://www.fxhash.xyz/u/B%C3%A4rnerJs
+This repo is used as education repo to build simple, generative NFT for the FXHash website / community. It's called BernerNFT because that is a local meetup here in Bern/Switzerland that is called BernerJS Talks.
+
+FXHash home is https://www.fxhash.xyz/u/B%C3%A4rnerJs
 
 You can get in touch with me here: https://twitter.com/neophob
 
