@@ -18,6 +18,7 @@ const pal = [
   ['#fe4a49', '#2ab7ca', '#fed766', '#e6e6ea', '#f4f4f8'],
   ['#fe4a49', '#feb2a8', '#fec8c1', '#fad9c1', '#f9caa7'],
   ['#ee4035', '#f37736', '#fdf498', '#7bc043', '#0392cf'],
+  ['#333333', '#666666', '#999999', '#cccccc', '#ffffff'],
 ];
 const palIdx = getRandomInt(pal.length);
 const colors = pal[palIdx];
@@ -114,6 +115,13 @@ context.fillStyle = '#000000';
 context.fillRect(0, 0, W, H);
 
 // "Main"
+context.beginPath();
+context.globalAlpha = 0.3;
+context.fillStyle = colors[getRandomInt(colors.length)];
+const r = (W-border)/2;
+context.arc(W/2, H/2, r+r*fxrand()/10, 0, Math.PI*2);
+context.fill();
+
 const initialAlpha = 0.3;
 const endAlpha = 0.75;
 const alphaDelta = (endAlpha-initialAlpha) / elements;
@@ -124,4 +132,17 @@ for (let i=0; i<elements; i++) {
   alpha += alphaDelta;
 }
 //edgy();
+
+context.globalAlpha = 1;
+context.shadowOffsetX = 0;
+context.shadowOffsetY = 0;
+context.shadowBlur = 0;
+
+for (let i=0; i<colors.length; i++) {
+  context.beginPath();
+  context.fillStyle = colors[i];
+  context.arc(W - 256 + 128,  H - (colors.length + 0) * 128 + i * 128, 32, 0, Math.PI*2);
+  context.fill();
+}
+
 fxpreview();
