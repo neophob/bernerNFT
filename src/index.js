@@ -8,10 +8,10 @@ function getRandomInt(dimension, minimalValue = 0) {
 }
 
 // init parameter
-const elements = getRandomInt(1000, 150);
-const border = getRandomInt(200, 100);
-const rotation = getRandomInt(12);
-const lineWidth = 1 + fxrand();
+const elements = getRandomInt(300, 75);
+const maximalRadius = getRandomInt(200, 400);
+const border = getRandomInt(400, 400);
+const lineWidth = 1 + fxrand()*4;
 const MUL = 1 + fxrand();
 const ADDMAX = getRandomInt(64);
 const pal = [
@@ -27,7 +27,7 @@ const colors = pal[palIdx];
 window.$fxhashFeatures = {
    "Elements": elements,
    "Border": border,
-   "Rotation": rotation,
+   "MaximalRadius": maximalRadius,
    "Line Width": lineWidth,
    "Noise": ADDMAX,
    "Multiply": MUL,
@@ -35,40 +35,54 @@ window.$fxhashFeatures = {
 }
 console.table(window.$fxhashFeatures);
 
+function min4(a, b, c, d) {
+  if (a < 0) a=99999;
+  if (b < 0) b=99999;
+  if (c < 0) c=99999;
+  if (d < 0) d=99999;
+  const r1 = Math.min(
+    Math.min(a, b),
+    Math.min(c, d)
+  );
+  if (r1 > 500) return 500;
+  // introduce "border violations", maximal 10% - it looks less strict
+  return r1+r1*1.1*fxrand();
+}
+
 // some helper functions
 function drawElement() {
-  context.save();
   const shadowSize = getRandomInt(12, 1) * 2;
-  context.rotate((fxrand()-0.5) * rotation * Math.PI / 180);
   context.shadowOffsetX = shadowSize;
   context.shadowOffsetY = shadowSize;
   context.shadowBlur = shadowSize;
 
   const color = getRandomInt(colors.length);
   const color2 = getRandomInt(colors.length);
-  context.shadowColor = 'black';//colors[color];
+  context.shadowColor = 'black';
 
-  const filled = fxrand() > 0.95;
   const x = border + getRandomInt(W - border*2);
   const y = border + getRandomInt(H - border*2);
-  const w = getRandomInt(W-x-border*2);
-  const h = getRandomInt(H-y-border*2);
+  const radius = getRandomInt(
+    min4(x-border, y-border, H-border-y, W-border-x)
+  );
 
-  const gradient = context.createLinearGradient(x, y, x+w, y+h);
-  gradient.addColorStop(0, colors[color]);
-  gradient.addColorStop(1, fxrand() > 0.5 ? colors[color] : colors[color2]);
-
-
+  const filled = fxrand() > 0.95;
+  context.beginPath();
   if (filled) {
-    context.fillStyle = gradient;
-    context.fillRect(x, y, w, h);
+    context.fillStyle = colors[color];
+    context.arc(x, y, radius, 0, Math.PI*2);
+    context.fill();
   } else {
+    const gradient = context.createConicGradient(0, x, y);
+    gradient.addColorStop(0, colors[color]);
+    gradient.addColorStop(0.5, colors[color2]);
+    gradient.addColorStop(1, colors[color]);
+
     context.strokeStyle = gradient;
     context.lineWidth = shadowSize * lineWidth;
-    context.strokeRect(x, y, w, h);
+    context.arc(x, y, radius, 0, Math.PI*2);
+    context.stroke();
   }
-
-  context.restore();
 }
 
 function edgy() {
@@ -109,5 +123,5 @@ for (let i=0; i<elements; i++) {
   drawElement();
   alpha += alphaDelta;
 }
-edgy();
+//edgy();
 fxpreview();
