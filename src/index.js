@@ -8,17 +8,18 @@ function getRandomInt(dimension, minimalValue = 0) {
 }
 
 // init parameter
-const elements = getRandomInt(300, 75);
+const elements = getRandomInt(275, 100);
 const maximalRadius = getRandomInt(200, 400);
 const border = getRandomInt(400, 400);
-const lineWidth = 1 + fxrand()*4;
+const lineWidth = 2 + fxrand()*3;
 const MUL = 1 + fxrand();
 const ADDMAX = getRandomInt(64);
 const pal = [
-  ['#fe4a49', '#2ab7ca', '#fed766', '#e6e6ea', '#f4f4f8'],
-  ['#fe4a49', '#feb2a8', '#fec8c1', '#fad9c1', '#f9caa7'],
-  ['#ee4035', '#f37736', '#fdf498', '#7bc043', '#0392cf'],
-  ['#333333', '#666666', '#999999', '#cccccc', '#ffffff'],
+  ['#1A1A2E', '#16213E', '#0F3460', '#E94560'],
+  ['#1B2430', '#51557E', '#816797', '#D6D5A8'],
+  ['#362222', '#171010', '#423F3E', '#2B2B2B'],
+  ['#041C32', '#04293A', '#064663', '#ECB365'],
+  ['#333333', '#666666', '#999999', '#cccccc'],
 ];
 const palIdx = getRandomInt(pal.length);
 const colors = pal[palIdx];
@@ -71,7 +72,9 @@ function drawElement() {
   context.beginPath();
   if (filled) {
     context.fillStyle = colors[color];
-    context.arc(x, y, radius, 0, Math.PI*2);
+    const a1 = (Math.PI/2)*fxrand();
+    context.arc(x, y, radius+radius*fxrand()/8, a1, a1+Math.PI);
+    context.arc(x, y, radius+radius*fxrand()/8, a1+Math.PI,a1+Math.PI+Math.PI);
     context.fill();
   } else {
     const gradient = context.createConicGradient(0, x, y);
@@ -115,11 +118,15 @@ context.fillStyle = '#000000';
 context.fillRect(0, 0, W, H);
 
 // "Main"
+
+//draw background circle
 context.beginPath();
 context.globalAlpha = 0.3;
 context.fillStyle = colors[getRandomInt(colors.length)];
 const r = (W-border)/2;
-context.arc(W/2, H/2, r+r*fxrand()/10, 0, Math.PI*2);
+const a1 = (Math.PI/2)*fxrand();
+context.arc(W/2, H/2, r+r*fxrand()/6, a1, a1+Math.PI);
+context.arc(W/2, H/2, r+r*fxrand()/6, a1+Math.PI,a1+Math.PI+Math.PI);
 context.fill();
 
 const initialAlpha = 0.3;
@@ -131,9 +138,9 @@ for (let i=0; i<elements; i++) {
   drawElement();
   alpha += alphaDelta;
 }
-//edgy();
+edgy();
 
-context.globalAlpha = 1;
+context.globalAlpha = 0.8;
 context.shadowOffsetX = 0;
 context.shadowOffsetY = 0;
 context.shadowBlur = 0;
@@ -146,3 +153,4 @@ for (let i=0; i<colors.length; i++) {
 }
 
 fxpreview();
+/**/
