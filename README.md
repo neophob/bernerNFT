@@ -25,6 +25,6 @@ You can get in touch with me here: https://twitter.com/neophob
 
 - [step 1](https://github.com/neophob/bernerNFT/tree/%232-step1): start, identical to the final "Geometrische Formen"
 - [step 2](https://github.com/neophob/bernerNFT/tree/%232-step2): replace rectangles with circles
-- [step 3](https://github.com/neophob/bernerNFT/tree/%232-step3): more colors, more interesting interpreation what the border is/should look like
+- [step 3](https://github.com/neophob/bernerNFT/tree/%232-step3): more colors, more interesting interpretation what the border is/should look like
 - [final](https://github.com/neophob/bernerNFT/tree/%232-final): tuning, change all colors, background circle, broken circles, show colors
 
