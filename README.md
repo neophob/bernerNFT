@@ -15,5 +15,8 @@ You can get in touch with me here: https://twitter.com/neophob
 
 - Simple Canvas operations
 - Find edges like functions to add noise to the image, so it looks less synthetic
-- Checkout `#1-` branches, 3 steps and the final piece
 - Released on FXHash: https://www.fxhash.xyz/generative/15282
+- [step 1](https://github.com/neophob/bernerNFT/tree/%231-step1): basic js setup
+- [step 2](https://github.com/neophob/bernerNFT/tree/%231-step2): expose fxhash options
+- [step 3](https://github.com/neophob/bernerNFT/tree/%231-step3): draw elements on canvas
+- [final](https://github.com/neophob/bernerNFT/tree/%231-final): add noise and edge detection so the result looks less synthetic
