@@ -25,6 +25,7 @@ You can get in touch with me here: https://twitter.com/neophob
 
 ![Geometrische Formen II](https://gateway.fxhash2.xyz/ipfs/QmPxkt81qkEvvXv96P9S6qTw5L67EaUmFKxQFPNf7ma7uF)
 
+- Released on FXHash: https://www.fxhash.xyz/generative/15702
 - [step 1](https://github.com/neophob/bernerNFT/tree/%232-step1): start, identical to the final "Geometrische Formen"
 - [step 2](https://github.com/neophob/bernerNFT/tree/%232-step2): replace rectangles with circles
 - [step 3](https://github.com/neophob/bernerNFT/tree/%232-step3): more colors, more interesting interpretation what the border is/should look like
